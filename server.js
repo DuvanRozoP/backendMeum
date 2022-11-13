@@ -3,15 +3,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 
 // CONFIGURATION OF SERVER CONECTION
-const uri = require('./config.server')
+const config = require('./config.server')
 const db = require('./db')
-db(uri)
+db(config.url)
 // --
 
 const router = require('./routers');
 
 let app = express();
-const port =  process.env.PORT || 3000;
 
 // WHILE LIST
 const whitelist = [
@@ -20,7 +19,6 @@ const whitelist = [
     'http://localhost:3000',
 ]
 
-//app.use(cors())
 app.use(cors({
     origin: whitelist
 }))
@@ -29,6 +27,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 router(app);
 
-app.listen(port, () => {
-    console.log('corriendo en puerto:', port)
+app.listen(config.port, () => {
+    console.log('corriendo en: '+ config.host + config.port)
 });

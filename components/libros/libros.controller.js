@@ -1,5 +1,6 @@
 const storeLibros = require('./libros.store');
-const editFile = require('../../file')
+const editFile = require('../../file');
+const config = require('../../config.server');
 
 // ADD LIBRO CONTROLLER CAMPOS AND TYPE
 function addLibro(name,description,file) {
@@ -9,16 +10,19 @@ function addLibro(name,description,file) {
         if( file.pdf[0].mimetype != 'application/pdf') reject('debes enviar un archivo pdf')
         if( file.png[0].mimetype != 'image/jpeg' ) reject('debes enviar un archivo jpg')
 
+        const api = config.host + config.port +'/static/file';
 
-        const api = 'https://localhost:3000/static/file'
-        let fileUri = `${api}/`+file.pdf[0].filename
-        let fileUriPng = `${api}/`+file.png[0].filename
+        let fileUrlPdf = api+file.pdf[0].filename
+        let fileUrlPng = api+file.png[0].filename
+
+        console.log(fileUrlPdf)
+        console.log(fileUrlPng)    
 
         const data = {
             name: name,
             description: description,
-            pdf: fileUri,
-            png: fileUriPng,
+            pdf: fileUrlPdf,
+            png: fileUrlPng,
             date: new Date()
         }
         
@@ -37,11 +41,8 @@ function getLibros(filterLibro) {
 // UPDATE LIBRO CONTROLLER CAMPOS AND TYPE
 function updateLibro(id,name,description,pdf,png) {
     return new Promise( async (resolve,reject) => {
-
         if (!id && !name && !description && !pdf && !png) reject('invalid data');
-
         const result = await storeLibros.update(id,name,description,pdf,png);
-
         resolve(result)
     })
 }
@@ -51,7 +52,7 @@ function deleteLibro(id) {
     return new Promise ((resolve,reject) => {
         if (!id) reject('Falta id, no se encuentra')
 
-        const api = 'https://localhost:3000/static/file/'
+        const api = config.host + config.port +'/static/file';
 
         getLibros(id).then( data => {
 
