@@ -10,7 +10,7 @@ function addLibro(name,description,file) {
         if( file.pdf[0].mimetype != 'application/pdf') reject('debes enviar un archivo pdf')
         if( file.png[0].mimetype != 'image/jpeg' ) reject('debes enviar un archivo jpg')
 
-        const api = config.host + config.port +'/static/file';
+        const api = config.host + config.port +'/static/file/';
 
         let fileUrlPdf = api+file.pdf[0].filename
         let fileUrlPng = api+file.png[0].filename
