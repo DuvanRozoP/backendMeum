@@ -9,13 +9,13 @@ async function getLibro(filterLibro) {
     let filter = {}
 
     if (filterLibro !== null) {
-        filter = { name: filterLibro }
+        filter = { _id: filterLibro }
     }
     const libros = await model.find(filter)
     return libros;
 }
 
-async function updateLibro(id, name,description,pdf) {
+async function updateLibro(id, name,description,pdf,png) {
     const modificador = await model.findOne({
         _id: id
     })
@@ -23,6 +23,7 @@ async function updateLibro(id, name,description,pdf) {
     modificador.name = name
     modificador.description = description
     modificador.pdf = pdf
+    modificador.png = png
 
     const editData = await modificador.save()
     return editData;
@@ -33,6 +34,7 @@ function deleteLibro(id) {
         _id: id
     })
 }
+
 
 module.exports = {
     add: addLibros,

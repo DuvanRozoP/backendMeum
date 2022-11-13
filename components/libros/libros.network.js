@@ -6,14 +6,17 @@ const controller = require('./libros.controller')
 
 let storage = multer.diskStorage({
     destination: function (req,file,cb){
-        cb(null, './public/file')
+        cb(null, './public/file/')
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        console.log(file)
+        cb(null, file.originalname.replace(/\s+/g, '') )
     }
 })
+//file.filename+'.'+file.fieldname
+//(file.size+file.originalname).replace(/\s+/g, '')
 
-let upload = multer({ storage: storage})
+let upload = multer({ storage: storage })
 
 // OBTENCION ESPECIFICA Y ALL
 router.get('/', (req, res) => {
@@ -34,20 +37,16 @@ router.post('/',
     ]),
     (req,res) => {
 
-
-    controller.addLibro(
-        req.body.name,
-        req.body.description,
-        req.files
-    ).then( data => {
-        //res.send(data)
-        response.success(req,res,201,data)
-    }).catch( error => {
-        response.error(req,res,401,error)
-    })
-
-    
-})
+        controller.addLibro(
+            req.body.name,
+            req.body.description,
+            req.files
+        )
+        .then( data => { response.success(req,res,201,data) })
+        .catch( error => { response.error(req,res,401,error) })
+        
+    }
+)
 
 // MODIFICACION DE DATOS
 router.patch('/:id', (req,res) => {
