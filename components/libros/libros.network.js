@@ -9,12 +9,9 @@ let storage = multer.diskStorage({
         cb(null, './public/file/')
     },
     filename: function (req, file, cb) {
-        console.log(file)
-        cb(null, file.originalname.replace(/\s+/g, '') )
+        cb(null, file.originalname.replace(/\s+/g, ''))
     }
 })
-//file.filename+'.'+file.fieldname
-//(file.size+file.originalname).replace(/\s+/g, '')
 
 let upload = multer({ storage: storage })
 
