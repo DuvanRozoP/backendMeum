@@ -1,29 +1,30 @@
 const model = require('./grupo.model');
 
 function addGrupo(grupo) {
-    console.log(grupo)
     const newGrupo = new model(grupo);
     newGrupo.save();
 }
 
 async function getGrupo(filterGrupo) {
     let filter = {}
-    if (filterGrupo !== null) filter = { grupo: filterGrupo }
+    if (filterGrupo !== null) filter = { _id: filterGrupo }
 
     const grupo = await model.find(filter)
     return grupo;
 }
 
-async function updateGrupo(id,numero,integrantes,libros,juegos,selfies) {
+async function updateGrupo(id,integrantes) {
     const modificador = await model.findOne({ _id: id })
-
-    modificador.integrantes = integrantes;
-    modificador.libros = libros;
-    modificador.juegos = juegos;
-    modificador.selfies = selfies;
+    if(integrantes != null ) modificador.integrantes = integrantes;
 
     const editData = await modificador.save()
     return editData;
+}
+
+function deleteGrupo(id) {
+    return model.deleteOne({
+        _id: id
+    })
 }
 
 async function updateGrupoLibro(grupo,libros) {
@@ -51,7 +52,9 @@ async function updateGrupoSelfies(grupo,selfies) {
 module.exports = {
     add: addGrupo,
     get: getGrupo,
+    remove: deleteGrupo,
     update: updateGrupo,
     updateGrupoLibro,
-    updateGrupoJuego
+    updateGrupoJuego,
+    updateGrupoSelfies
 } 

@@ -28,13 +28,19 @@ router.post('/',(req, res) => {
 router.patch('/:id', (req,res) => {
     controller.updateGrupo(
         req.params.id,
-        req.body.integrantes,
-        req.body.libros,
-        req.body.juegos,
-        req.body.selfies
+        req.body.integrantes
     )
     .then( data => { response.success(req,res,201,data) })
     .catch( e => { response.error(req,res,401,e) })
+})
+
+// ELIMINAR GRUPO DE LA LISTA
+router.delete('/:id',(req,res) => {
+    controller.deleteGrupo(
+        req.params.id
+    )
+    .then(data => response.success(req,res,201,data))
+    .catch(error => response.error(req,res,401,error))
 })
 
 module.exports = router

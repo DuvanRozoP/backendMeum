@@ -1,6 +1,4 @@
 const storeGrupo = require('./grupo.store')
-const storeLibro = require('../libros/libros.store')
-const storeJuegos = require('../juegos/juegos.store')
 
 function addGrupo(grupo,integrantes,libros,juegos,selfies) {
     return new Promise((resolve, reject) => {
@@ -26,36 +24,39 @@ function getGrupo(filterGrupo) {
     })
 }
 
-function updateGrupo(id,numero,integrantes,libros,juegos,selfies) {
+function updateGrupo(id,integrantes) {
     return new Promise( async (resolve,reject) => {
         if(!id) return reject('ingresa el id del grupo');
-    
-        return reject('MANTENIMIENTO');
-        /*const result = await storeGrupo.update(id,numero,integrantes,libros,juegos,selfies);
-        return result*/
+        if(!integrantes) return reject('datos vacios');
+
+        const result = await storeGrupo.update(id,integrantes);
+        resolve(result);
     })
 }
 
-// AGREGAR DATOS ESPECIFICOS
-function updateLibroGrupo(numero) {
+// DELETE GRUPO CONTROLLER CAMPOS AND TYPE
+function deleteGrupo(id){
     return new Promise((resolve,reject) => {
-        const libros = storeLibro.getLibroPostGrupo(numero);
-        resolve(libros)
+        
+        if(!id) return reject('falta id, no se encuentra');
+
+        getGrupo(id).then(data => {
+            console.log(data)
+            if(data.length === 0) return reject('elemento no existe')
+            
+            storeGrupo.remove(id)
+            .then(() => {
+                resolve("se elimino Grupo...");
+            })
+            .catch( e => { reject("No se a podido eliminar el Grupo" + e) })
+            
+        })
     })
 }
 
-function updateJuegoGrupo(numero) {
-    return new Promise((resolve,reject)=> {
-        const juegos = storeJuegos.getJuegoPostGrupo(numero);
-        if(juegos.length === 0) return reject([])
-        resolve(juegos)
-    })
-}
-// --
 module.exports = {
     addGrupo,
     getGrupo,
     updateGrupo,
-    updateLibroGrupo,
-    updateJuegoGrupo,
+    deleteGrupo,
 }

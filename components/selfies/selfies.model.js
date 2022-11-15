@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const modeloSchema = new Schema({
+    grupo: String,
     redes: {
         type: Array,
         default: []

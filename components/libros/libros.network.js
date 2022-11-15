@@ -55,7 +55,8 @@ router.patch('/:id/:grupo',
             req.body.description, 
             req.files
         )
-        .then(data => { response.success(req,res,201,data) }).catch( error => { response.error(req,res,401,error) })  
+        .then(data => { response.success(req,res,201,data) })
+        .catch( error => { response.error(req,res,401,error) })  
     }
 )
 

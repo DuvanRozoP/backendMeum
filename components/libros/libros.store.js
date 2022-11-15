@@ -7,10 +7,7 @@ function addLibros(libro) {
 
 async function getLibro(filterLibro) {
     let filter = {}
-
-    if (filterLibro !== null) {
-        filter = { _id: filterLibro }
-    }
+    if (filterLibro !== null) { filter = { _id: filterLibro } }
     const libros = await model.find(filter)
     return libros;
 }
@@ -32,7 +29,7 @@ async function updateLibro(id,name,description,file) {
     if(file.pdf != null) modificador.pdf = file.pdf
     if(file.png != null) modificador.png = file.png
 
-    const editData = await modificador.save()
+    const editData = await modificador.save();
     return editData;
 }
 

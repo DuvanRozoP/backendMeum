@@ -91,10 +91,10 @@ function deleteLibro(id,grupo) {
             editFile.deleteFile(files, api, ruta);
             storeLibros.remove(id)
             .then(() => {
-                actulizarGrupo(grupo) ;
+                actulizarGrupo(grupo);
                 resolve("Se elimino el libro..." );
             })
-            .catch( e => { reject("No se a podido eliminar el juego" + e) })
+            .catch( e => { reject("No se a podido eliminar el libro" + e) })
         })
     })
 }
