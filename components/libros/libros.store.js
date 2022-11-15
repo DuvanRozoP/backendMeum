@@ -14,16 +14,23 @@ async function getLibro(filterLibro) {
     const libros = await model.find(filter)
     return libros;
 }
+// OBTENER LIBROS PARA ENVIAR A GRUPOS
+async function getLibroPostGrupo(filterLibro) {
+    let filter = {}
+    if (filterLibro !== null) { filter = { grupo: filterLibro } }
+    const libros = await model.find(filter)
+    return libros;
+}
 
-async function updateLibro(id, name,description,pdf,png) {
+async function updateLibro(id,name,description,file) {
     const modificador = await model.findOne({
         _id: id
     })
 
-    modificador.name = name
-    modificador.description = description
-    modificador.pdf = pdf
-    modificador.png = png
+    if(name != null) modificador.name = name
+    if(description != null) modificador.description = description
+    if(file.pdf != null) modificador.pdf = file.pdf
+    if(file.png != null) modificador.png = file.png
 
     const editData = await modificador.save()
     return editData;
@@ -41,4 +48,5 @@ module.exports = {
     list: getLibro,
     update: updateLibro,
     remove: deleteLibro,
+    getLibroPostGrupo
 }

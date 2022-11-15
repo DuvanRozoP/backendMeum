@@ -34,6 +34,7 @@ router.post('/',
     ]),
     (req,res) => {
         controller.addJuego(
+            req.body.grupo,
             req.body.name,
             req.body.description,
             req.files
@@ -44,13 +45,35 @@ router.post('/',
     
 )
 
+// MODIFICAR JEUGOS
+router.patch('/:id/:grupo',
+    upload.fields([
+        {name:"png1", maxCount:1},
+        {name:"png2", maxCount:1},
+        {name:"png3", maxCount:1},
+        {name:"png4", maxCount:1},
+        {name:"png5", maxCount:1},
+    ]),
+    (req,res) => {
+        controller.updateJuego(
+            req.params.id,
+            req.params.grupo,
+            req.body.name,
+            req.body.description,
+            req.files
+        )
+        .then(data => { response.success(req,res,201,data) })
+        .catch(error => { response.error(req,res,401,error) })
+    }
+)
+
 // DELETE JUEGO
-router.delete('/:id', (req, res) => {
-    controller.deleteJuego(req.params.id)
-        .then( data => { response.success(req,res,201,data) })
-        .catch( error => { response.error(req,res,401,error) })
+router.delete('/:id/:grupo', (req, res) => {
+    controller.deleteJuego(
+        req.params.id,
+        req.params.grupo)
+    .then( data => { response.success(req,res,201,data) })
+    .catch( error => { response.error(req,res,401,error) })
 })
-
-
 
 module.exports = router

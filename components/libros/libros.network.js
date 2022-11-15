@@ -19,11 +19,8 @@ let upload = multer({ storage: storage })
 router.get('/', (req, res) => {
     const filterLibro = req.query.name || null
     controller.getLibros(filterLibro)
-        .then( data => {
-            response.success(req,res,201,data)
-        }).catch( error  => {
-            response.error(req,res,401,error)
-        })
+    .then( data => { response.success(req,res,201,data) })
+    .catch( error  => { response.error(req,res,401,error) })
 })
 
 // CREACION DE LIBROS
@@ -33,37 +30,43 @@ router.post('/',
         {name: "png", maxCount: 1},
     ]),
     (req,res) => {
-
         controller.addLibro(
+            req.body.grupo,
             req.body.name,
             req.body.description,
             req.files
         )
         .then( data => { response.success(req,res,201,data) })
         .catch( error => { response.error(req,res,401,error) })
-        
     }
 )
 
 // MODIFICACION DE DATOS
-router.patch('/:id', (req,res) => {
-
-    controller.updateLibro(req.params.id, req.body.name, req.body.description, req.body.pdf)
-        .then(data => {
-            response.success(req,res,201,data)
-        }).catch( error => {
-            response.error(req,res,401,error)
-        })
-})
+router.patch('/:id/:grupo', 
+    upload.fields([
+        {name: "pdf", maxCount: 1},
+        {name: "png", maxCount: 1},
+    ]),
+    (req,res) => {
+        controller.updateLibro(
+            req.params.id,
+            req.params.grupo,
+            req.body.name, 
+            req.body.description, 
+            req.files
+        )
+        .then(data => { response.success(req,res,201,data) }).catch( error => { response.error(req,res,401,error) })  
+    }
+)
 
 // ELIMINACION DE DATOS
-router.delete('/:id', (req,res) => {
-    controller.deleteLibro(req.params.id)
-        .then(data => {
-            response.success(req,res,201,data)
-        }).catch( error => {
-            response.error(req,res,401,error)
-        })
+router.delete('/:id/:grupo', (req,res) => {
+    controller.deleteLibro(
+        req.params.id,
+        req.params.grupo
+    )
+    .then(data => { response.success(req,res,201,data) })
+    .catch( error => { response.error(req,res,401,error) })
 })
 
 module.exports = router
