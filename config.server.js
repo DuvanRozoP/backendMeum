@@ -12,7 +12,7 @@ const config = {
 
 const config = {
     url: uri,
-    port: process.env.PORT || 3000,
+    port: process.env.PORT,
     host: process.env.HOST || 'https://richardardilaayala.herokuapp.com',
     publicRoute: process.env.PUBLIC_ROUTE || '/static'
 }
