@@ -24,7 +24,7 @@ function addLibro(grupo,name,description,file) {
         }
         
         storeLibros.add(data);
-        //actulizarGrupo(grupo)
+        actulizarGrupo(grupo)
         resolve(data);
     })
     
