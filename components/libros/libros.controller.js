@@ -10,7 +10,7 @@ const storeGrupo = require('../grupos/grupo.store')
 function addLibro(grupo,name,description,file) {
     return new Promise((resolve,reject) => {
 
-        if(!grupo || !name || !description) reject('nombre y description no son validos')
+        if(!grupo || !name || !description) return reject('nombre y description no son validos')
 
         const api = config.host + '/static/file/'; 
 
