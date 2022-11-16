@@ -15,7 +15,7 @@ let app = express();
 // WHILE LIST
 const whitelist = [
     'http://127.0.0.1:5500',
-    'https://mighty-tor-31120.herokuapp.com',
+    'https://richardardilaayala.herokuapp.com',
     'http://localhost:3000',
 ]
 
