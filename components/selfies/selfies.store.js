@@ -1,4 +1,3 @@
-const { updateSelfies } = require('./selfies.controller');
 const model = require('./selfies.model')
 
 // AGREGAR A LA BASE DE DATOS COLLETION SELFIES

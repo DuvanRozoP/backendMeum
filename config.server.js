@@ -6,13 +6,13 @@ const config = {
     url: uri,
     port: process.env.PORT || 3000,
     host: process.env.HOST || 'http://localhost:',
-    publicRoute: process.env.PUBLIC_ROUTE || '/static'
+    publicRoute: process.env.PUBLIC_ROUTE || '/static',
 }
 */
 
 const config = {
     url: uri,
-    port: process.env.PORT,
+    port: process.env.PORT || 3000,
     host: process.env.HOST || 'https://richardardilaayala.herokuapp.com',
     publicRoute: process.env.PUBLIC_ROUTE || '/static'
 }
