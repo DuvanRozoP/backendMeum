@@ -1,0 +1,324 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+.menu{
+    background-color: #a30000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    margin-right: auto;
+    height: 60px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.containerBotones{
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.botonMenu{
+    width: 120px;
+    height: 50px;
+
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+
+    
+    outline-style: none;
+    border-style: none;
+    margin-right: 5px;
+
+    transition: all 500ms;
+}
+
+.botonMenu:hover{
+    background-color: white;
+    color: #a30000;
+    border-radius: 10px;
+    transform: scale(110%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.containerfront{
+    overflow-x: hidden;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sky{
+    width: 100%;
+    height: 88vh;
+    background-size: cover;
+  
+  }
+  
+  .sky1{
+    width: 100%;
+    height: 44vh;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 254, 254, 0) 100%);
+  
+    position: absolute;
+    top: 80px;
+  }
+  
+  .sky2{
+    width: 100%;
+    height: 44vh;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 254, 254, 0) 100%);
+    transform: rotate(180deg);
+  
+    position: absolute;
+    bottom: -2px;
+  }
+  
+  .contianerInfo{
+  
+    height: 80%;
+    width: 95%;
+  
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.45) 50%, rgba(217, 217, 217, 0) 100%);
+    box-shadow: 0px 4px 9px 9px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(37px);
+    /* Note: backdrop-filter has minimal browser support */
+  
+    border-radius: 67px;
+  
+    position: absolute;
+    right: 35px;
+    top: 100px;
+    display: flex;
+    flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+  }
+  
+  
+  .imgEarth{
+    width: 600px;
+    height: 500px;
+  }
+  
+  .infoEdit{
+    width: 600px;
+    margin-left: 50px;
+  }
+  
+  .title{
+    font-size: 45px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .description2{
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+  
+  .frase{
+    font-size: 28px;
+  }
+  
+  /* LIBROS  */
+
+  .containerSearch{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+
+  }
+
+  .containerSearch input{
+    width: 300px;
+    height: 50px;
+
+    background-color: #A30000;
+    border-radius: 50px;
+
+    outline: none;
+    border-style: none;
+
+    padding-left: 30px;
+    padding-right: 50px;
+    color: white;
+  }
+
+  .containerSearch button{
+    height: 35px;
+    width: 35px;
+    position: relative;
+    left: -40px;
+    background-color: white;
+    border-radius: 50%;
+    outline: none;
+    border-style: none;
+  }
+
+  .containerLibros{
+    width: 100%;
+    padding: 30px;
+
+    display: flex;
+  }
+
+  .articulo{
+    width: 250px;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: bisque;
+    transition: all 200ms;
+    cursor: pointer;
+    margin: 15px;
+  }
+
+  .articulo:hover{
+    transform: scale(110%);
+    box-shadow: 0px 4px 12px 5px rgba(0, 0, 0, 0.25);
+  }
+
+  .imagenLibro{
+    border-radius: 20px;
+    width: 210px;
+    transition: all 200ms;
+    margin-bottom: 10px;
+  }
+
+  .imagenLibro:hover,
+  .titulo:hover,
+  .description:hover{
+    transform: scale(110%);
+    background-size: 100%;
+  }
+
+  .titulo,
+  .description
+  {
+    transition: all 200ms;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* CONTENEDOR PROFESOR */
+  .contenedorProfesor{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdf2f2;
+  }
+
+  .grupo{
+    width: 800px;
+    height: 250px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .numeroGrupo{
+    margin-bottom: 10px;
+  }
+
+  .numeroGrupo::before{
+    content: "Grupo #";
+  }
+
+  .integrantes{
+    display: flex;
+  }
+
+  .JuegoAc{
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+    background-color: #09af24;
+    padding: 10px;
+    margin-right: 10px;
+    transition: all 200ms;
+  }
+  .JuegoAc::after{
+    content: "Juego";
+  }
+
+  .SelfieAc{
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+    background-color: #d3b614;
+    padding: 10px;
+    margin-right: 10px;
+    transition: all 200ms;
+  }
+  .SelfieAc::after{
+    content: "Selfie";
+  }
+
+  .LibroAc{
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+    background-color: #144fce;
+    padding: 10px;
+    margin-right: 10px;
+    transition: all 200ms;
+  }
+  .LibroAc::after{
+    content: "Libro";
+  }
+
+  .JuegoAc:hover,
+  .SelfieAc:hover,
+  .LibroAc:hover
+  {
+    transform: scale(110%);
+  }
+
+
+  /* DESAPARECER LOS OBJETOS */
+
+  .desaparecer{
+    display: none;
+    visibility: hidden;
+  }

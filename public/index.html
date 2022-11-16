@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Dueno: Richard Ayala Ardila </h1>
-    <h1> Desarrolladores: Duvan Rozo Parra </h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meum</title>
+    <link rel="stylesheet" href="./src/styles/desktop.css" />
+  </head>
+  <body>
+    <header id="menu" class="menu">
+      <img
+        id="logo"
+        src="./src/img/unimeta_universidad_villavicenciofw.png"
+        alt="logo unimeta"
+      />
+
+      <section class="containerBotones">
+        <button id="botonLibross" class="botonMenu">Libros</button>
+        <button id="botonJuegos" class="botonMenu">Juegos</button>
+        <button id="botonSelfies" class="botonMenu">Selfies</button>
+        <button id="botonGrupo" class="botonMenu">Grupo</button>
+        <button id="botonProfesor" class="botonMenu">Profesor</button>
+      </section>
+    </header>
+
+    <!-- HOME -->
+    <section id="containerfront" class="containerfront">
+        <section class="backgroundSky">
+          <img class="sky" src="./src/img/word-image-78.jpeg" alt="">
+          <section class="iluminacion">
+            <div class="sky1"></div>
+            <div class="sky2"></div>
+          </section>
+          <section class="contianerInfo">
+            <section class="info">
+              <section class="infoEdit">
+                <h1 class="title">CONTINENTE DE AMERICA</h1>
+                <P class="description2"> Buscamos el <strong>conocer, demostrar y difundir la historia de america,</strong> gracias a los grupos de investigacion de <strong>MEUM.</strong></P>
+                <p class="frase" >
+                  <strong>“EL PASADO ES LA PIEZA CLAVE PARA ENTENDER EL PRESENTE Y LLEGAR AL FUTURO”</strong>
+                </p>
+              </section>
+            </section>
+            <section class="containerImgEarth" >
+              <img class="imgEarth" src="./src/img/tierra.png" alt="">
+            </section>
+          </section>
+        </section>
+      </section>
+
+
+    <!-- LIBROS -->
+    <section class="contenedorLibrosPrincipal">
+        <section class="containerSearch">
+            <input class="inputLibro" type="text">
+            <button class="botonSerach">
+              🔍
+            </button>
+          </section>
+          
+          <section id="containerLibros" class="containerLibros" >
+
+            <article class="articulo" >
+              <img class="imagenLibro" src="./src/img/preview.png" alt="">
+              <h5 class="titulo" > Historia de america </h5>
+              <p class="description" > suceso que afectaron economica a america en el transcurso del tiempo, desde sus inicios hasta la actualidad. </p>
+            </article>
+
+          </section>
+    </section>
+
+    <!-- PROFESOR -->
+    <section class="contenedorProfesor" >
+      
+      <section class="contenedorGrupos">
+
+        <article class="grupo">
+          <h3 class="numeroGrupo"></h3>
+          <section class="integrantes">
+          </section>
+        </article>
+        
+      </section>
+
+    </section> 
+
+    <script src="./main.js" ></script>
+  </body>
 </html>
