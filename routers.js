@@ -10,8 +10,7 @@ const router = (server) => {
     server.use('/user', user);
     server.use('/juegos', juegos);
     server.use('/selfies', selfies);
-    server.use('/grupos', grupos)
-
+    server.use('/grupos', grupos);
     server.use('/static', express.static('public'));
 }
 
